@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>无人机遮挡绿色引导灯 · Web 仿真器</title>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="main-canvas"></canvas>
+
+      <!-- 层 1 + 层 2：R_occ 曲线（uPlot 画布 + Canvas2D 特效层） -->
+      <div id="curve-host">
+        <div id="curve-uplot"></div>
+        <canvas id="curve-effects"></canvas>
+      </div>
+
+      <!-- 层 3：HUD 文字读数 -->
+      <div id="hud-text-layer">
+        <span id="hud-roc">R_occ = —</span>
+        <span id="hud-time">t = 0.00 / 0.00 s</span>
+        <span id="hud-speed">0.50×</span>
+      </div>
+
+      <!-- FPV 小窗（独立 canvas + 独立正交场景） -->
+      <div id="fpv-host">
+        <canvas id="fpv-canvas"></canvas>
+        <div id="fpv-readout">
+          <span id="fpv-roc">R_occ —</span>
+          <span id="fpv-image">像面遮挡比 —</span>
+          <span id="fpv-margin">视场余量 —</span>
+        </div>
+      </div>
+
+      <!-- 顶部浮动条：视角预设 -->
+      <div id="view-bar"></div>
+
+      <!-- 无命中告警：参数组合下飞镖无法命中时，播放到末帧叠加黄字 -->
+      <div id="no-hit-warning" hidden>当前参数下飞镖无法命中</div>
+
+      <!-- 底部时间轴控制条 -->
+      <div id="timeline-bar">
+        <div id="timeline-controls">
+          <button id="btn-play" title="播放 / 暂停">▶</button>
+          <button id="btn-reset" title="回到起点">⟲</button>
+          <div id="speed-host">
+            <span class="speed-end">慢放</span>
+            <input id="speed-slider" type="range" min="0.25" max="4" step="0.01" value="0.5" />
+            <span class="speed-end">快放</span>
+            <span id="speed-value">0.50×</span>
+          </div>
+          <span id="speed-hint">当前预览 0.50×，导出视频固定 0.50×</span>
+          <button id="btn-export">导出 MP4</button>
+        </div>
+        <div id="timeline-track-host">
+          <div id="timeline-track">
+            <div id="timeline-progress"></div>
+            <div id="timeline-thumb"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="panel-host"></div>
+      <div id="toast-host"></div>
+
+      <!-- 导出遮罩（拦截 UI 交互，但进度条持续动画） -->
+      <div id="export-overlay" hidden>
+        <div class="export-card">
+          <h3>正在导出 MP4</h3>
+          <p id="export-stage">准备中…</p>
+          <div class="export-progress"><div id="export-progress-fill"></div></div>
+          <p id="export-percent">0%</p>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

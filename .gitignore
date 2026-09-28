@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.vite/
+*.local
+*.log
+# Python 参考实现的字节码缓存（npm run golden 每次都会重建）
+__pycache__/
+*.pyc
+# 临时自检截图
+smoke-*.png
+final-check.png
+fpv-crop.png

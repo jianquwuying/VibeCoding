@@ -1,0 +1,31 @@
+{
+  "name": "rm-uav-occlusion-web",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "无人机遮挡绿色引导灯 - 纯前端 Web 仿真器 (TypeScript + Three.js)",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "golden": "python tools/gen_golden.py"
+  },
+  "dependencies": {
+    "@ffmpeg/core": "^0.12.6",
+    "@ffmpeg/ffmpeg": "^0.12.10",
+    "@ffmpeg/util": "^0.12.1",
+    "three": "^0.169.0",
+    "tweakpane": "^4.0.5",
+    "uplot": "^1.6.31"
+  },
+  "devDependencies": {
+    "@tweakpane/core": "^2.0.0",
+    "@types/three": "^0.169.0",
+    "polygon-clipping": "^0.15.7",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "vitest": "^2.1.8"
+  }
+}
