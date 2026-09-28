@@ -1,0 +1,8 @@
+numpy
+shapely
+matplotlib
+pandas
+# 可选
+tqdm
+# 可选：MP4 动画（自带 ffmpeg 二进制，免系统安装）
+# imageio-ffmpeg
